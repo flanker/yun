@@ -7,6 +7,7 @@ Gem::Specification.new do |gem|
   gem.summary = "A command line tool to manage Amazon cloud service"
   gem.authors = ["Feng Zhichao"]
   gem.email =  ["flankerfc@gmail.com"]
+  gem.homepage = "https://github.com/flanker/yun"
 
   gem.version = Yun::VERSION
   gem.platform = Gem::Platform::RUBY
