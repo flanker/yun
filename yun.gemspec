@@ -17,6 +17,6 @@ Gem::Specification.new do |gem|
   gem.executables  = "yun"
 
   gem.add_runtime_dependency "fog", ">= 1.0.0"
-  gem.add_runtime_dependency 'hirb', '~> 0.4.5'
+  gem.add_runtime_dependency 'hirb', '>= 0.4.5'
   gem.add_runtime_dependency 'thor', '>= 0.14.0'
 end
