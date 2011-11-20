@@ -1,12 +1,18 @@
 require 'fog'
 require 'hirb'
+require 'yun/config'
 
 module Yun
   class Yun
 
     def self.list
-      nodes = Fog::Compute.new({:provider => "aws",
-            :region => "us-west-1"}).servers.map do |node|
+      config = Config.new
+      options = {:provider => "aws",
+          :aws_access_key_id => config.aws_access_key_id,
+          :aws_secret_access_key => config.aws_secret_access_key,
+          :region => config.region}
+
+      nodes = Fog::Compute.new(options).servers.map do |node|
         {
           :id => node.id,
           :flavor_id => node.flavor_id,
