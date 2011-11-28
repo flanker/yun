@@ -5,7 +5,7 @@ require 'yun/commands/node_command'
 module Yun
   class CLI < Thor
 
-    register Node, :node, "node", "commands for node"
+    register NodeCommand, :node, "node", "commands for node"
   end
 end
 

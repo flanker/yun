@@ -1,7 +1,7 @@
-require 'thor'
+require 'yun/command'
 
 module Yun
-  class Node < Thor
+  class NodeCommand < Command
 
     desc "list", "list all nodes"
     def list
