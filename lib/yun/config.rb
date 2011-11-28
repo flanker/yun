@@ -7,10 +7,6 @@ module Yun
       @setting = YAML.load_file(config_file)[:default]
     end
 
-    def config_file
-      @config_file ||= File.expand_path('~/.yun')
-    end
-
     def aws_access_key_id
       @setting[:aws_access_key_id]
     end
@@ -21,6 +17,11 @@ module Yun
 
     def region
       @setting[:region]
+    end
+
+    private
+    def config_file
+      @config_file ||= File.expand_path('~/.yun')
     end
 
   end
