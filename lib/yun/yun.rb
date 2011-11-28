@@ -6,11 +6,11 @@ module Yun
   class Yun
 
     def initialize options
-      @options = options
+      @servers = Fog::Compute.new(options).servers
     end
 
     def list
-      nodes = Fog::Compute.new(@options).servers.map do |node|
+      nodes = @servers.map do |node|
         {
           :id => node.id,
           :flavor_id => node.flavor_id,
@@ -25,6 +25,18 @@ module Yun
       end
 
       puts Hirb::Helpers::AutoTable.render nodes
+    end
+
+    def create attributes
+      $stdout.sync = true
+
+      server = @servers.create attributes
+
+      print "creating node"
+
+      server.wait_for { print "."; ready? }
+
+      puts "\ndone"
     end
   end
 end

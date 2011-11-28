@@ -4,10 +4,10 @@ module Yun
   module Command
 
     def yun
-      @yun ||= Yun.new options
+      @yun ||= Yun.new init_data
     end
 
-    def options
+    def init_data
       {
         :provider => "aws",
         :aws_access_key_id => config.aws_access_key_id,
