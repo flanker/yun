@@ -1,11 +1,13 @@
 require 'yun/command'
 
 module Yun
-  class NodeCommand < Command
+  class NodeCommand < Thor
+
+    include Command
 
     desc "list", "list all nodes"
     def list
-      Yun.list
+      yun.list
     end
 
   end

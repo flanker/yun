@@ -5,14 +5,12 @@ require 'yun/config'
 module Yun
   class Yun
 
-    def self.list
-      config = Config.new
-      options = {:provider => "aws",
-          :aws_access_key_id => config.aws_access_key_id,
-          :aws_secret_access_key => config.aws_secret_access_key,
-          :region => config.region}
+    def initialize options
+      @options = options
+    end
 
-      nodes = Fog::Compute.new(options).servers.map do |node|
+    def list
+      nodes = Fog::Compute.new(@options).servers.map do |node|
         {
           :id => node.id,
           :flavor_id => node.flavor_id,
