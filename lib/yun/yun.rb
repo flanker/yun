@@ -13,10 +13,11 @@ module Yun
       nodes = @servers.map do |node|
         {
           :id => node.id,
+          :node_name => node.tags['Name'],
           :flavor_id => node.flavor_id,
           :image_id => node.image_id,
           :address => node.private_ip_address,
-          :created_at => node.created_at,
+          :created_at => node.created_at.strftime("%Y %b %d %H:%m:%S"),
           :status => node.state,
           :instance_type => node.root_device_type
         }
