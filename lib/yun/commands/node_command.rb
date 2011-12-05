@@ -18,6 +18,11 @@ module Yun
       yun.create node_attributes
     end
 
+    desc "destroy NODE_NAME", "destroy a node"
+    def destroy node_name
+      yun.destroy node_name
+    end
+
     private
     def create_node_attributes node_name, options
       {

@@ -39,5 +39,27 @@ module Yun
 
       puts "\ndone"
     end
+
+    def destroy node_name
+      server = find_by_node_name node_name
+      if server == nil
+        puts "cannot find server named #{node_name}"
+      else
+        server.destroy
+
+        print "destroying node #{node_name}"
+
+        server.wait_for { print "."; state == "terminated" }
+
+        puts "\ndone"
+      end
+    end
+
+    private
+    def find_by_node_name node_name
+      @servers.find do |server|
+        server.tags['Name'] == node_name
+      end
+    end
   end
 end
