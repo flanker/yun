@@ -58,7 +58,7 @@ module Yun
     private
     def find_by_node_name node_name
       @servers.find do |server|
-        server.tags['Name'] == node_name
+        server.tags['Name'] == node_name && server.state != "terminated"
       end
     end
   end
