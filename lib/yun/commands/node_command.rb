@@ -1,4 +1,4 @@
-require 'yun/command'
+require 'yun/commands/command'
 require 'yun/config'
 
 module Yun

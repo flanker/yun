@@ -1,2 +1,2 @@
 require 'yun/yun'
-require 'yun/cli'
+require 'yun/commands/cli'
