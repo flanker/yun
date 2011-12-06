@@ -6,12 +6,12 @@ module Yun
 
     include Command
 
-    desc "list", "list all nodes"
+    desc "node list", "list all nodes"
     def list
       yun.list
     end
 
-    desc "create NODE_NAME", "create a node"
+    desc "node create NODE_NAME", "create a node"
     method_option :image, :aliases => "-i", :default => "ami-11d68a54", :desc => "Amazon Machine Image"
     method_option :instance_type, :aliases => "-t", :default => "t1.micro", :desc => "Instance Type"
     def create(node_name)
@@ -19,7 +19,7 @@ module Yun
       yun.create node_attributes
     end
 
-    desc "destroy NODE_NAME", "destroy a node"
+    desc "node destroy NODE_NAME", "destroy a node"
     def destroy node_name
       yun.destroy node_name
     end

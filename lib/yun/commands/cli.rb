@@ -5,7 +5,12 @@ require 'yun/commands/node_command'
 module Yun
   class CLI < Thor
 
-    register NodeCommand, :node, "node", "commands for node"
+    desc "ssh NODE_NAME", "ssh to a node"
+    def ssh node_name
+
+    end
+
+    register NodeCommand, :node, "node SUBCOMMAND", "commands for node"
   end
 end
 
