@@ -1,4 +1,5 @@
 require 'yun/command'
+require 'yun/config'
 
 module Yun
   class NodeCommand < Thor
@@ -28,7 +29,8 @@ module Yun
       {
         :tags => create_node_tags(node_name, options),
         :image_id => options[:image],
-        :flavor_id => options[:instance_type]
+        :flavor_id => options[:instance_type],
+        :key_name => Config.key_name
       }
     end
 

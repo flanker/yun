@@ -3,24 +3,28 @@ require 'yaml'
 module Yun
   class Config
 
-    def initialize
-      @setting = YAML.load_file(config_file)[:default]
+    def self.aws_access_key_id
+      setting[:aws_access_key_id]
     end
 
-    def aws_access_key_id
-      @setting[:aws_access_key_id]
+    def self.aws_secret_access_key
+      setting[:aws_secret_access_key]
     end
 
-    def aws_secret_access_key
-      @setting[:aws_secret_access_key]
+    def self.region
+      setting[:region]
     end
 
-    def region
-      @setting[:region]
+    def self.key_name
+      setting[:key_name]
     end
 
     private
-    def config_file
+    def self.setting
+      @setting ||= YAML.load_file(config_file)[:default]
+    end
+
+    def self.config_file
       @config_file ||= File.expand_path('~/.yun')
     end
 

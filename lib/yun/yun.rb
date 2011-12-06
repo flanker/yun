@@ -16,7 +16,7 @@ module Yun
           :node_name => node.tags['Name'],
           :flavor_id => node.flavor_id,
           :image_id => node.image_id,
-          :address => node.private_ip_address,
+          :address => node.public_ip_address,
           :created_at => node.created_at.strftime("%Y %b %d %H:%m:%S"),
           :status => node.state,
           :instance_type => node.root_device_type
@@ -38,6 +38,8 @@ module Yun
       server.wait_for { print "."; ready? }
 
       puts "\ndone"
+
+      run_chef server
     end
 
     def destroy node_name
@@ -60,6 +62,10 @@ module Yun
       @servers.find do |server|
         server.tags['Name'] == node_name && server.state != "terminated"
       end
+    end
+
+    def run_chef server
+
     end
   end
 end
