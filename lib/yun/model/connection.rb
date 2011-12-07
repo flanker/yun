@@ -8,7 +8,8 @@ module Yun
 
     def create attributes={}
       fog_attributes = FogAttributes.new attributes
-      @servers.create fog_attributes
+      server = @servers.create fog_attributes
+      Node.new server
     end
 
   end

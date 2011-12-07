@@ -19,9 +19,9 @@ describe Yun::Connection do
   end
 
   it 'should create server with default value when no attributes given' do
-    server = @connection.create
+    node = @connection.create
 
-    server.flavor_id.should == 't1.micro'
+    node.instance_type.should == 't1.micro'
   end
 
   it 'should create server using given attributes' do
@@ -31,11 +31,11 @@ describe Yun::Connection do
         :instance_type => 'small_type',
         :key_name => 'some_key'
       }
-    server = @connection.create attributes
+    node = @connection.create attributes
 
-    server.image_id.should == 'test_image_id'
-    server.flavor_id.should == 'small_type'
-    server.key_name.should == 'some_key'
+    node.image.should == 'test_image_id'
+    node.instance_type.should == 'small_type'
+    node.key_name.should == 'some_key'
   end
 
 end
