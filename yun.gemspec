@@ -19,4 +19,6 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency "fog", ">= 1.0.0"
   gem.add_runtime_dependency 'hirb', '>= 0.4.5'
   gem.add_runtime_dependency 'thor', '>= 0.14.0'
+
+  s.add_development_dependency 'rspec', '~> 2.7'
 end
