@@ -23,7 +23,6 @@ module Yun
       list.find do |node|
         node.name == node_name
       end
-
     end
 
   end

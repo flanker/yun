@@ -25,5 +25,10 @@ module Yun
       @server.state
     end
 
+    def destroy
+      @server.destroy
+      @server.wait_for { not reload }
+    end
+
   end
 end

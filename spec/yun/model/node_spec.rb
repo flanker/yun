@@ -3,17 +3,30 @@ require 'yun/model/node'
 
 describe Yun::Node do
 
+  options = {
+    :provider => 'aws',
+    :aws_access_key_id => 'fake_aws_access_key_id',
+    :aws_secret_access_key => 'fake_secret_access_key',
+    :region => 'us-west-1'
+  }
+
+  after :each do
+    Fog::Compute.new(options).servers.each do |server|
+      server.destroy
+    end
+  end
+
   context 'basic attributes' do
 
     before do
-      options =
+      attributes =
         {
           :image_id => 'some_image',
           :flavor_id => 'small_type',
           :key_name => 'some_key',
           :state => 'running'
         }
-      @ec2_node = Fog::Compute::AWS::Server.new options
+      @ec2_node = Fog::Compute::AWS::Server.new attributes
     end
 
     it 'should convert all the ec2 node attribute' do
@@ -30,14 +43,30 @@ describe Yun::Node do
   context 'node name' do
 
     before do
-      options = { :tags => { :name => 'test node' } }
-      @ec2_node = Fog::Compute::AWS::Server.new options
+      attributes = { :tags => { :name => 'test node' } }
+      @ec2_node = Fog::Compute::AWS::Server.new attributes
     end
 
     it 'should parse the name in the tags value' do
       node = Yun::Node.new @ec2_node
 
       node.name.should == 'test node'
+    end
+
+  end
+
+  context 'destroy' do
+
+    before do
+      @connection = Yun::Connection.new options
+    end
+
+    it 'should destroy ec2 node' do
+      node = @connection.create
+
+      node.destroy
+
+      @connection.list.length.should == 0
     end
 
   end
