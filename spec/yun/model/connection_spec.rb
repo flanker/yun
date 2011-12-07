@@ -81,4 +81,17 @@ describe Yun::Connection do
 
   end
 
+  context 'find' do
+    before do
+      @connection = Yun::Connection.new options
+      @one_node = @connection.create({ :name => 'one node' })
+    end
+
+    it 'should find the node by node name' do
+      node = @connection.find 'one node'
+
+      node.name.should == 'one node'
+    end
+  end
+
 end

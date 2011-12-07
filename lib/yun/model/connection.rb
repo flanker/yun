@@ -19,5 +19,12 @@ module Yun
       end
     end
 
+    def find node_name
+      list.find do |node|
+        node.name == node_name
+      end
+
+    end
+
   end
 end
