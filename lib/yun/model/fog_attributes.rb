@@ -19,7 +19,9 @@ module Yun
 
     def fog_key_mapping
       {
-        :image => :image_id
+        :image => :image_id,
+        :instance_type => :flavor_id,
+        :key_name => :key_name
       }
     end
 

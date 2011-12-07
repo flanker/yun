@@ -10,7 +10,11 @@ describe Yun::Connection do
     :region => 'us-west-1'
   }
 
-  before do
+  before :all do
+    Fog::Compute.new(options).key_pairs.create(:name => 'some_key')
+  end
+
+  before :each do
     @connection = Yun::Connection.new options
   end
 
@@ -20,12 +24,18 @@ describe Yun::Connection do
     server.flavor_id.should == 't1.micro'
   end
 
-  it 'should create server using given image' do
-    attributes = { :image => 'test_image_id' }
+  it 'should create server using given attributes' do
+    attributes =
+      {
+        :image => 'test_image_id',
+        :instance_type => 'small_type',
+        :key_name => 'some_key'
+      }
     server = @connection.create attributes
 
     server.image_id.should == 'test_image_id'
-
+    server.flavor_id.should == 'small_type'
+    server.key_name.should == 'some_key'
   end
 
 end
