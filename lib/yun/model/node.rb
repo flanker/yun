@@ -17,5 +17,9 @@ module Yun
       @server.key_name
     end
 
+    def name
+      @server.tags['Name']
+    end
+
   end
 end
