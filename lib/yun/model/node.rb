@@ -18,7 +18,7 @@ module Yun
     end
 
     def name
-      @server.tags['Name']
+      @server.tags[:name]
     end
 
   end

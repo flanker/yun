@@ -28,7 +28,7 @@ describe Yun::Node do
   context 'node name' do
 
     before do
-      options = { :tags => { 'Name' => 'test node' } }
+      options = { :tags => { :name => 'test node' } }
       @ec2_node = Fog::Compute::AWS::Server.new options
     end
 
