@@ -57,6 +57,18 @@ module Yun
       end
     end
 
+    def ssh node_name
+      server = find_by_node_name node_name
+      if server == nil
+        puts "cannot find server named #{node_name}"
+      else
+        server_ip = server.public_ip_address
+        key = "~/.ssh/#{Config.key_name}.pem"
+        user_name = "ec2-user"
+        exec "ssh -i #{key} #{user_name}@#{server_ip}"
+      end
+    end
+
     private
     def find_by_node_name node_name
       @servers.find do |server|
