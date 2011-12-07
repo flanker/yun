@@ -10,7 +10,8 @@ describe Yun::Node do
         {
           :image_id => 'some_image',
           :flavor_id => 'small_type',
-          :key_name => 'some_key'
+          :key_name => 'some_key',
+          :state => 'running'
         }
       @ec2_node = Fog::Compute::AWS::Server.new options
     end
@@ -21,6 +22,7 @@ describe Yun::Node do
       node.image.should == 'some_image'
       node.instance_type.should == 'small_type'
       node.key_name.should == 'some_key'
+      node.state.should == 'running'
     end
 
   end

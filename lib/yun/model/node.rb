@@ -21,5 +21,9 @@ module Yun
       @server.tags[:name]
     end
 
+    def state
+      @server.state
+    end
+
   end
 end

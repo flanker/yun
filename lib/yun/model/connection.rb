@@ -9,7 +9,14 @@ module Yun
     def create attributes={}
       fog_attributes = FogAttributes.new attributes
       server = @servers.create fog_attributes
+      server.wait_for { ready? }
       Node.new server
+    end
+
+    def list
+      @servers.map do |server|
+        Node.new server
+      end
     end
 
   end
