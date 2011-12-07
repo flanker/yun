@@ -63,27 +63,20 @@ describe Yun::Connection do
   end
 
   context 'list' do
-    def create_ec2_node options
-      server = Fog::Compute.new(options).servers.create
-      server.wait_for { ready? }
-    end
-
-    before :all do
-      @one_node = create_ec2_node options
-      @otherone_node = create_ec2_node options
-    end
 
     before :each do
       @connection = Yun::Connection.new options
+
+      @one_node = @connection.create({ :name => 'one node' })
+      @other_node = @connection.create({ :name => 'other node' })
     end
 
     it 'should return all the node' do
       nodes = @connection.list
 
       nodes.length.should == 2
-      # TODO assert the node
-      # nodes[0].name.should == 'one node'
-      # nodes[1].name.should == 'other node'
+      nodes[0].name.should == 'other node'
+      nodes[1].name.should == 'one node'
     end
 
   end
