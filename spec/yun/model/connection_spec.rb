@@ -75,8 +75,8 @@ describe Yun::Connection do
       nodes = @connection.list
 
       nodes.length.should == 2
-      nodes[0].name.should == 'other node'
-      nodes[1].name.should == 'one node'
+      names = nodes.map { |node| node.name }
+      names.sort.should == ['one node', 'other node']
     end
 
   end
