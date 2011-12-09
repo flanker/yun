@@ -21,4 +21,14 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency 'thor', '>= 0.14.0'
 
   gem.add_development_dependency 'rspec', '~> 2.7'
+
+  gem.post_install_message = <<-MSG
+Thanks for installing yun!
+You need put a config file in your home directory: ~/.yun
+:default:
+  :aws_access_key_id:
+  :aws_secret_access_key:
+  :region:
+  :key_name:
+MSG
 end
