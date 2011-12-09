@@ -1,8 +1,3 @@
-require 'thor'
-require 'thor/group'
-require 'yun/commands/command_base'
-require 'yun/commands/node_command'
-
 module Yun
   class YunCommand < Thor
 
@@ -10,16 +5,16 @@ module Yun
 
     desc "ssh NODE_NAME", "ssh to a node"
     def ssh node_name
-      key = "~/.ssh/#{Config.key_name}.pem"
-      user_name = "ec2-user"
-
+      ssh_config = SshConfig.new Config.key_name
       node = connection.find node_name
-      server_ip = node.ip
+      ssh = Ssh.new node.ip, ssh_config
 
-      exec "ssh -i #{key} #{user_name}@#{server_ip}"
+      ssh.connect
     end
 
     register NodeCommand, :node, "node SUBCOMMAND", "commands for node"
+
+    private
   end
 end
 

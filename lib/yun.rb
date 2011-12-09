@@ -1,2 +1,3 @@
+require 'yun/config'
+require 'yun/command'
 require 'yun/model'
-require 'yun/commands/yun_command'
