@@ -2,7 +2,7 @@ require 'thor'
 require 'yun/model/connection'
 
 module Yun
-  module Command
+  module CommandBase
 
     def connection
       @connection ||= Connection.new init_data

@@ -1,12 +1,12 @@
 require 'thor'
 require 'thor/group'
-require 'yun/commands/command'
+require 'yun/commands/command_base'
 require 'yun/commands/node_command'
 
 module Yun
-  class CLI < Thor
+  class YunCommand < Thor
 
-    include Command
+    include CommandBase
 
     desc "ssh NODE_NAME", "ssh to a node"
     def ssh node_name
@@ -23,4 +23,4 @@ module Yun
   end
 end
 
-Yun::CLI.start
+Yun::YunCommand.start

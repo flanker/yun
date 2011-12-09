@@ -1,10 +1,10 @@
-require 'yun/commands/command'
+require 'yun/commands/command_base'
 require 'yun/config'
 
 module Yun
   class NodeCommand < Thor
 
-    include Command
+    include CommandBase
 
     desc "node list", "list all nodes"
     def list
