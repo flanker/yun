@@ -26,8 +26,8 @@ module Yun
     method_option :image, :aliases => "-i", :default => "ami-11d68a54", :desc => "Amazon Machine Image"
     method_option :instance_type, :aliases => "-t", :default => "t1.micro", :desc => "Instance Type"
     def create(node_name)
-      node_attributes = create_node_attributes node_name, options
-      yun.create node_attributes
+      attributes = create_attributes node_name, options
+      connection.create attributes
     end
 
     desc "node destroy NODE_NAME", "destroy a node"
@@ -36,18 +36,12 @@ module Yun
     end
 
     private
-    def create_node_attributes node_name, options
+    def create_attributes node_name, options
       {
-        :tags => create_node_tags(node_name, options),
-        :image_id => options[:image],
-        :flavor_id => options[:instance_type],
+        "name" => node_name,
+        :image => options[:image],
+        :instance_type => options[:instance_type],
         :key_name => Config.key_name
-      }
-    end
-
-    def create_node_tags node_name, options
-      {
-        "Name" => node_name
       }
     end
 

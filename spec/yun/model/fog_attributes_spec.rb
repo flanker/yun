@@ -11,11 +11,11 @@ describe Yun::FogAttributes do
   end
 
   it 'should save name attribute into tags' do
-    attribute = { :name => 'test name' }
+    attribute = { "name" => 'test name' }
 
     fog_attr = Yun::FogAttributes.new attribute
 
-    fog_attr[:tags][:name].should == 'test name'
+    fog_attr[:tags]["name"].should == 'test name'
   end
 
 end

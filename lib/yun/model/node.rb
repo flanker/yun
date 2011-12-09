@@ -22,7 +22,7 @@ module Yun
     end
 
     def name
-      @server.tags[:name]
+      @server.tags["name"]
     end
 
     def state

@@ -29,7 +29,7 @@ module Yun
     end
 
     def convert_tags_attributes attributes
-      tags_key = [:name]
+      tags_key = ["name"]
       tags_hash = attributes.reject do |key, value|
         not tags_key.include? key
       end

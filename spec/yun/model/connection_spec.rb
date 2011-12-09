@@ -52,7 +52,7 @@ describe Yun::Connection do
     end
 
     it 'should create server with name' do
-      attributes = { :name => 'test server' }
+      attributes = { "name" => 'test server' }
 
       node = @connection.create attributes
 
@@ -66,8 +66,8 @@ describe Yun::Connection do
     before :each do
       @connection = Yun::Connection.new config
 
-      @one_node = @connection.create({ :name => 'one node' })
-      @other_node = @connection.create({ :name => 'other node' })
+      @one_node = @connection.create({ "name" => 'one node' })
+      @other_node = @connection.create({ "name" => 'other node' })
     end
 
     it 'should return all the node' do
@@ -83,7 +83,7 @@ describe Yun::Connection do
   context 'find' do
     before do
       @connection = Yun::Connection.new config
-      @one_node = @connection.create({ :name => 'one node' })
+      @one_node = @connection.create({ "name" => 'one node' })
     end
 
     it 'should find the node by node name' do

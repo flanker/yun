@@ -49,7 +49,7 @@ describe Yun::Node do
   context 'node name' do
 
     before do
-      attributes = { :tags => { :name => 'test node' } }
+      attributes = { :tags => { "name" => 'test node' } }
       @ec2_node = Fog::Compute::AWS::Server.new attributes
     end
 
