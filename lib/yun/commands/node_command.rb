@@ -1,3 +1,4 @@
+require 'hirb'
 require 'yun/commands/command_base'
 require 'yun/config'
 
