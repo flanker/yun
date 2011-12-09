@@ -19,6 +19,10 @@ module Yun
       setting[:key_name]
     end
 
+    def self.chef_repo
+      setting[:chef_repo]
+    end
+
     private
     def self.setting
       @setting ||= YAML.load_file(config_file)[:default]

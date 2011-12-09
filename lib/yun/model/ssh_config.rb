@@ -6,7 +6,7 @@ module Yun
     end
 
     def user
-      "ec2-user"
+      "bitnami"
     end
 
     def key_file

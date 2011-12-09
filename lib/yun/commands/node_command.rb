@@ -22,7 +22,7 @@ module Yun
     end
 
     desc "node create NODE_NAME", "create a node"
-    method_option :image, :aliases => "-i", :default => "ami-11d68a54", :desc => "Amazon Machine Image"
+    method_option :image, :aliases => "-i", :default => "ami-2e10406b", :desc => "Amazon Machine Image"
     method_option :instance_type, :aliases => "-t", :default => "t1.micro", :desc => "Instance Type"
     def create(node_name)
       attributes = create_attributes node_name, options
