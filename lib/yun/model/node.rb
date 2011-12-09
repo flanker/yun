@@ -5,6 +5,10 @@ module Yun
       @server = server
     end
 
+    def id
+      @server.id
+    end
+
     def image
       @server.image_id
     end
@@ -23,6 +27,14 @@ module Yun
 
     def state
       @server.state
+    end
+
+    def ip
+      @server.public_ip_address
+    end
+
+    def created_at
+      @server.created_at
     end
 
     def destroy

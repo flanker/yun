@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'yun/model/node'
 
 describe Yun::Node do
 
@@ -19,12 +18,16 @@ describe Yun::Node do
   context 'basic attributes' do
 
     before do
+      @time = Time.now
       attributes =
         {
+          :id => 'id',
           :image_id => 'some_image',
           :flavor_id => 'small_type',
           :key_name => 'some_key',
-          :state => 'running'
+          :state => 'running',
+          :public_ip_address => '127.0.0.1',
+          :created_at => @time
         }
       @ec2_node = Fog::Compute::AWS::Server.new attributes
     end
@@ -32,10 +35,13 @@ describe Yun::Node do
     it 'should convert all the ec2 node attribute' do
       node = Yun::Node.new @ec2_node
 
+      node.id.should == 'id'
       node.image.should == 'some_image'
       node.instance_type.should == 'small_type'
       node.key_name.should == 'some_key'
       node.state.should == 'running'
+      node.ip.should == '127.0.0.1'
+      node.created_at == @time
     end
 
   end
