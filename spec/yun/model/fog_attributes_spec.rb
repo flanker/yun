@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'yun/model/fog_attributes'
 
 describe Yun::FogAttributes do
 

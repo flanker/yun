@@ -1,9 +1,8 @@
 require 'spec_helper'
-require 'yun/model/connection'
 
 describe Yun::Connection do
 
-  options = {
+  config = {
     :provider => 'aws',
     :aws_access_key_id => 'fake_aws_access_key_id',
     :aws_secret_access_key => 'fake_secret_access_key',
@@ -11,11 +10,11 @@ describe Yun::Connection do
   }
 
   before :all do
-    Fog::Compute.new(options).key_pairs.create(:name => 'some_key')
+    Fog::Compute.new(config).key_pairs.create(:name => 'some_key')
   end
 
   after :each do
-    Fog::Compute.new(options).servers.each do |server|
+    Fog::Compute.new(config).servers.each do |server|
       server.destroy
     end
   end
@@ -23,7 +22,7 @@ describe Yun::Connection do
   context 'create' do
 
     before :each do
-      @connection = Yun::Connection.new options
+      @connection = Yun::Connection.new config
     end
 
     it 'should create server with default value when no attributes given' do
@@ -65,7 +64,7 @@ describe Yun::Connection do
   context 'list' do
 
     before :each do
-      @connection = Yun::Connection.new options
+      @connection = Yun::Connection.new config
 
       @one_node = @connection.create({ :name => 'one node' })
       @other_node = @connection.create({ :name => 'other node' })
@@ -83,7 +82,7 @@ describe Yun::Connection do
 
   context 'find' do
     before do
-      @connection = Yun::Connection.new options
+      @connection = Yun::Connection.new config
       @one_node = @connection.create({ :name => 'one node' })
     end
 

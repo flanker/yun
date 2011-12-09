@@ -1,10 +1,11 @@
 require 'thor'
+require 'yun/model/connection'
 
 module Yun
   module Command
 
-    def yun
-      @yun ||= Yun.new init_data
+    def connection
+      @connection ||= Connection.new init_data
     end
 
     def init_data

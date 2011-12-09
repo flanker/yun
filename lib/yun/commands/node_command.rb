@@ -8,7 +8,18 @@ module Yun
 
     desc "node list", "list all nodes"
     def list
-      yun.list
+      node_attributes = connection.list.map do |node|
+        {
+          :id => node.id,
+          :name => node.name,
+          :type => node.instance_type,
+          :image => node.image,
+          :ip => node.ip,
+          :created_at => node.created_at,
+          :state => node.state
+        }
+      end
+      puts Hirb::Helpers::AutoTable.render node_attributes
     end
 
     desc "node create NODE_NAME", "create a node"

@@ -1,4 +1,4 @@
-require 'yun/model/fog_attributes'
+require 'yun/model'
 
 module Yun
   class Connection
