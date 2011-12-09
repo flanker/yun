@@ -16,7 +16,7 @@ module Yun
           :type => node.instance_type,
           :image => node.image,
           :ip => node.ip,
-          :created_at => node.created_at,
+          :created_at => node.created_at.strftime("%Y-%m-%d %H:%M:%S"),
           :state => node.state
         }
       end
