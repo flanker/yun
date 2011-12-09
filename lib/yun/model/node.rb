@@ -39,7 +39,7 @@ module Yun
 
     def destroy
       @server.destroy
-      @server.wait_for { not reload }
+      @server.wait_for { not reload or state == 'terminated' }
     end
 
   end
