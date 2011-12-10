@@ -6,7 +6,8 @@ About
 
 `yun` is a command line tool for manage Amazon EC2 environment.
 
-It's still working in process.
+It's still working in process. Now it supports `create`, `destroy`,
+`list`, `ssh`, `chef provision` commands.
 
 Ruby Gem
 --------
@@ -29,8 +30,9 @@ Basically it should contains:
     :default:
       :aws_access_key_id:
       :aws_secret_access_key:
-      :region:
+      :region: us-west-1
       :key_name:
+      :chef_repo: /PATH/TO/YOUR/CHEF_REPO
 
 ### create EC2 node
 
@@ -47,6 +49,10 @@ Basically it should contains:
 ### ssh to EC2 node
 
     yun ssh NODE_NAME
+
+### provision EC2 node using chef
+
+    yun chef NODE_NAME ROLE_NAME
 
 Other
 -----
