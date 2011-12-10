@@ -26,9 +26,10 @@ Gem::Specification.new do |gem|
 Thanks for installing yun!
 You need put a config file in your home directory: ~/.yun
 :default:
-  :aws_access_key_id:
-  :aws_secret_access_key:
-  :region:
-  :key_name:
+  :aws_access_key_id: YOUR_AWS_ACCESS_KEY_ID
+  :aws_secret_access_key: YOUR_AWS_SECRET_ACCESS_KEY
+  :region: us-west-1
+  :key_name: YOUR_KEY_PAIR_NAME
+  :chef_repo: /PATH/TO/YOUR/CHEF_REPO
 MSG
 end

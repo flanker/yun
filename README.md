@@ -28,10 +28,10 @@ After installing `yun`, you need to create a config file `~/.yun`.
 Basically it should contains:
 
     :default:
-      :aws_access_key_id:
-      :aws_secret_access_key:
+      :aws_access_key_id: YOUR_AWS_ACCESS_KEY_ID
+      :aws_secret_access_key: YOUR_AWS_SECRET_ACCESS_KEY
       :region: us-west-1
-      :key_name:
+      :key_name: YOUR_KEY_PAIR_NAME
       :chef_repo: /PATH/TO/YOUR/CHEF_REPO
 
 ### create EC2 node
