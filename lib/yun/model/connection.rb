@@ -6,10 +6,10 @@ module Yun
       @servers = Fog::Compute.new(options).servers
     end
 
-    def create attributes={}
+    def create attributes={}, &block
       fog_attributes = FogAttributes.new attributes
       server = @servers.create fog_attributes
-      server.wait_for { ready? }
+      server.wait_for { instance_eval(&block) if block_given?; ready? }
       Node.new server
     end
 

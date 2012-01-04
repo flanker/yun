@@ -25,8 +25,13 @@ module Yun
     method_option :image, :aliases => "-i", :default => "ami-2e10406b", :desc => "Amazon Machine Image"
     method_option :instance_type, :aliases => "-t", :default => "t1.micro", :desc => "Instance Type"
     def create(node_name)
+      $stdout.sync = true
       attributes = create_attributes node_name, options
-      connection.create attributes
+      print "creating node."
+      connection.create attributes do
+        print "."
+      end
+      puts "\ndone"
     end
 
     desc "node destroy NODE_NAME", "destroy a node"
