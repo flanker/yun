@@ -36,8 +36,11 @@ module Yun
 
     desc "node destroy NODE_NAME", "destroy a node"
     def destroy node_name
+      $stdout.sync = true
       node = connection.find node_name
-      node.destroy
+      print "destroy node."
+      node.destroy { print "." }
+      puts "\ndone"
     end
 
     private

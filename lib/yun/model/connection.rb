@@ -9,7 +9,10 @@ module Yun
     def create attributes={}, &block
       fog_attributes = FogAttributes.new attributes
       server = @servers.create fog_attributes
-      server.wait_for { instance_eval(&block) if block_given?; ready? }
+      server.wait_for do
+        instance_eval(&block) if block_given?
+        ready?
+      end
       Node.new server
     end
 

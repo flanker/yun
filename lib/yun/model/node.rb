@@ -37,9 +37,12 @@ module Yun
       @server.created_at
     end
 
-    def destroy
+    def destroy &block
       @server.destroy
-      @server.wait_for { not reload or state == 'terminated' }
+      @server.wait_for do
+        instance_eval(&block) if block_given?
+        not reload or state == 'terminated'
+      end
     end
 
   end
