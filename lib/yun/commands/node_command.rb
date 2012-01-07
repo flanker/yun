@@ -1,4 +1,5 @@
 require 'hirb'
+require 'pp'
 
 module Yun
   class NodeCommand < Thor
@@ -12,7 +13,7 @@ module Yun
           :id => node.id,
           :name => node.name,
           :type => node.instance_type,
-          :image => node.image,
+          :os => node.os,
           :ip => node.ip,
           :created_at => node.created_at.strftime("%Y-%m-%d %H:%M:%S"),
           :state => node.state
@@ -22,7 +23,7 @@ module Yun
     end
 
     desc "node create NODE_NAME", "create a node"
-    method_option :image, :aliases => "-i", :default => "ubuntu", :desc => "Amazon Machine Image(OS name)"
+    method_option :os, :aliases => "-o", :default => "ubuntu", :desc => "OS Name"
     method_option :instance_type, :aliases => "-t", :default => "micro", :desc => "Instance Type"
     def create(node_name)
       $stdout.sync = true
@@ -43,11 +44,21 @@ module Yun
       puts "\ndone"
     end
 
+    desc "node info NODE_NAME", "show a node's info"
+    def info node_name
+      $stdout.sync = true
+      node = connection.find node_name
+      pp node.all_info
+    end
+
     private
     def create_attributes node_name, options
+      os = options[:os]
       {
         "name" => node_name,
-        :image => ImageType.parse(options[:image]),
+        "os" => os,
+        "user" => Config.get_user(os),
+        :image => Config.get_image(os),
         :instance_type => InstanceType.parse(options[:instance_type]),
         :key_name => Config.key_name
       }

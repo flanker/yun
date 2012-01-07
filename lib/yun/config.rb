@@ -23,6 +23,14 @@ module Yun
       setting[:chef_repo]
     end
 
+    def self.get_image os_name
+      setting[:os][os_name.to_sym][:image]
+    end
+
+    def self.get_user os_name
+      setting[:os][os_name.to_sym][:user]
+    end
+
     private
     def self.setting
       @setting ||= YAML.load_file(config_file)[:default]

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Yun::Ssh do
 
   before do
-    @ssh_config = Yun::SshConfig.new "test_key"
+    @ssh_config = Yun::SshConfig.new "user", "test_key"
   end
 
   it 'should execute the correct ssh command' do

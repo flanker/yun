@@ -24,7 +24,7 @@ module Yun
 
     def find node_name
       list.find do |node|
-        node.name == node_name
+        node.name == node_name and not node.is_destroyed?
       end
     end
 

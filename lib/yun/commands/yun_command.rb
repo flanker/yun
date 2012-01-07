@@ -5,8 +5,8 @@ module Yun
 
     desc "ssh NODE_NAME", "ssh to a node"
     def ssh node_name
-      ssh_config = SshConfig.new Config.key_name
       node = connection.find node_name
+      ssh_config = SshConfig.new node.user, node.key_name
       ssh = Ssh.new node.ip, ssh_config
 
       ssh.connect

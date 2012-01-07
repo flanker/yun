@@ -25,6 +25,14 @@ module Yun
       @server.tags["name"]
     end
 
+    def os
+      @server.tags["os"]
+    end
+
+    def user
+      @server.tags["user"]
+    end
+
     def state
       @server.state
     end
@@ -43,6 +51,14 @@ module Yun
         instance_eval(&block) if block_given?
         not reload or state == 'terminated'
       end
+    end
+
+    def all_info
+      @server
+    end
+
+    def is_destroyed?
+      @server.state == 'terminated'
     end
 
   end

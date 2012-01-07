@@ -10,7 +10,9 @@ module Yun
     end
 
     def connect
-      exec "ssh -i #{key_file} #{user}@#{@host}"
+      ssh_command = "ssh -i #{key_file} #{user}@#{@host}"
+      puts ssh_command
+      exec ssh_command
     end
 
     def chef role

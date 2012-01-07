@@ -1,17 +1,18 @@
 module Yun
   class SshConfig
 
-    def initialize key_name
+    def initialize user, key_name
+      @user = user
       @key_name = key_name
     end
 
     def user
-      "bitnami"
+      @user
     end
 
     def key_file
       "~/.ssh/#{@key_name}.pem"
     end
-      
+
   end
 end
