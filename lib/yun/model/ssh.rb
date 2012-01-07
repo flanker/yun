@@ -17,9 +17,6 @@ module Yun
 
     def chef role
       Net::SSH.start(@host, user, :keys => [key_file]) do |ssh|
-        puts "installing chef"
-        remote_command ssh, "bash /tmp/install_chef_file.sh"
-
         puts "packaging chef repo"
         tmp_chef_repo_tar = make_chef_repo_tar Config.chef_repo
 
@@ -27,6 +24,10 @@ module Yun
         ssh.scp.upload! tmp_chef_repo_tar, tmp_chef_repo_tar
         ssh.scp.upload! install_chef_file, "/tmp/install_chef_file.sh"
         ssh.scp.upload! chef_config_file, "/tmp/chef-solo.rb"
+
+        puts "installing chef"
+        remote_command ssh, "bash /tmp/install_chef_file.sh"
+
         remote_command ssh, "echo {\\\"run_list\\\":\\\"role[#{role}]\\\"} > /tmp/node.json"
 
         puts "executing chef"
