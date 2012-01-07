@@ -22,8 +22,8 @@ module Yun
     end
 
     desc "node create NODE_NAME", "create a node"
-    method_option :image, :aliases => "-i", :default => "ami-2e10406b", :desc => "Amazon Machine Image"
-    method_option :instance_type, :aliases => "-t", :default => "t1.micro", :desc => "Instance Type"
+    method_option :image, :aliases => "-i", :default => "ubuntu", :desc => "Amazon Machine Image(OS name)"
+    method_option :instance_type, :aliases => "-t", :default => "micro", :desc => "Instance Type"
     def create(node_name)
       $stdout.sync = true
       attributes = create_attributes node_name, options
@@ -47,8 +47,8 @@ module Yun
     def create_attributes node_name, options
       {
         "name" => node_name,
-        :image => options[:image],
-        :instance_type => options[:instance_type],
+        :image => ImageType.parse(options[:image]),
+        :instance_type => InstanceType.parse(options[:instance_type]),
         :key_name => Config.key_name
       }
     end
