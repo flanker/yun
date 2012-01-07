@@ -4,7 +4,7 @@ module Yun
       case os_type
         when "amazon" then "ami-1bd68a5e"
         when "ubuntu" then "ami-2e10406b"
-        when "windows" then "ami-f53768b0"
+        when "windows" then "ami-ed3768a8"
       end
     end
   end
