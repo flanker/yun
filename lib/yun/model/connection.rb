@@ -23,9 +23,14 @@ module Yun
     end
 
     def find node_name
-      list.find do |node|
+      node = list.find do |node|
         node.name == node_name and not node.is_destroyed?
       end
+      if node == nil
+        puts "Error: Cannot find node #{node_name}"
+        exit 1
+      end
+      node
     end
 
   end
