@@ -31,6 +31,10 @@ module Yun
       setting[:os][os_name.to_sym][:user]
     end
 
+    def self.images
+      setting[:os]
+    end
+
     private
     def self.setting
       @setting ||= YAML.load_file(config_file)[:default]

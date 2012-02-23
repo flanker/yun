@@ -22,6 +22,7 @@ module Yun
     end
 
     register NodeCommand, :node, "node SUBCOMMAND", "commands for node"
+    register ImageCommand, :image, "image SUBCOMMAND", "commands for image"
 
     private
   end
