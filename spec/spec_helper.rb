@@ -1,6 +1,7 @@
 require 'rspec'
 require 'fog'
 require 'yun'
+require 'mocha'
 
 Fog.mock!
 

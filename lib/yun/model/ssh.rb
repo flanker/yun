@@ -4,15 +4,18 @@ require 'net/scp'
 module Yun
   class Ssh
 
+    attr_accessor :executor
+
     def initialize host, ssh_config
       @host = host
       @ssh_config = ssh_config
+      executor = Yun::CommandExecutor.new
     end
 
     def connect
       ssh_command = "ssh -i #{key_file} #{user}@#{@host}"
       puts ssh_command
-      exec ssh_command
+      executor.exec ssh_command
     end
 
     def chef role
