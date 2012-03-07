@@ -8,4 +8,5 @@ group :test do
   gem 'rspec'
   gem 'mocha'
   gem 'ruby-debug'
+  gem 'nyan-cat-formatter'
 end
