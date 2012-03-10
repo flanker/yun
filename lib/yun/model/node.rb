@@ -61,5 +61,14 @@ module Yun
       @server.state == 'terminated'
     end
 
+    def wait_for_ssh_ready &block
+      ssh_config = SshConfig.new user, key_name
+      ssh = Ssh.new ip, ssh_config
+      @server.wait_for do
+        instance_eval(&block) if block_given?
+        ssh.is_ssh_ready?
+      end
+    end
+
   end
 end

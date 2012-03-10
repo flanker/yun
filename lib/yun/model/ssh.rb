@@ -18,6 +18,15 @@ module Yun
       executor.sys_exec ssh_command
     end
 
+    def is_ssh_ready?
+      tcp_socket = TCPSocket.new(@host, 22)
+      IO.select([tcp_socket], nil, nil, 10)
+    rescue Exception
+      false
+    ensure
+      tcp_socket && tcp_socket.close
+    end
+
     def chef role
       Net::SSH.start(@host, user, :keys => [key_file]) do |ssh|
         puts "packaging chef repo"

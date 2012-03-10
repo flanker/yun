@@ -27,11 +27,22 @@ module Yun
     method_option :instance_type, :aliases => "-t", :default => "micro", :desc => "Instance Type"
     def create(node_name)
       $stdout.sync = true
+
       attributes = create_attributes node_name, options
+
       print "creating node."
-      connection.create attributes do
+
+      node = connection.create attributes do
         print "."
       end
+
+      print "node #{node_name} created."
+      print "\nwaiting sshd ready."
+
+      node.wait_for_ssh_ready { print "." }
+
+      print "node #{node_name} is ssh ready."
+
       puts "\ndone"
     end
 
