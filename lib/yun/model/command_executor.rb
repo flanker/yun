@@ -1,9 +1,9 @@
 module Yun
   class CommandExecutor
 
-    def exec command
+    def sys_exec command
       exec command
     end
 
   end
-end 
+end

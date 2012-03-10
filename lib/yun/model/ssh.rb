@@ -9,13 +9,13 @@ module Yun
     def initialize host, ssh_config
       @host = host
       @ssh_config = ssh_config
-      executor = Yun::CommandExecutor.new
+      self.executor = Yun::CommandExecutor.new
     end
 
     def connect
       ssh_command = "ssh -i #{key_file} #{user}@#{@host}"
       puts ssh_command
-      executor.exec ssh_command
+      executor.sys_exec ssh_command
     end
 
     def chef role

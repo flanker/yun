@@ -11,8 +11,9 @@ describe Yun::Ssh do
 
   it 'should execute the correct ssh command' do
     expected_command = "ssh -i ~/.ssh/test_key.pem user@127.0.0.1"
-    @fake_executor.expects(:exec).with(expected_command).returns(true)
+    @fake_executor.expects(:sys_exec).with(expected_command).returns(true)
 
     @ssh.connect.should be_true
   end
+
 end
