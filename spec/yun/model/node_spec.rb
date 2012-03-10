@@ -46,7 +46,7 @@ describe Yun::Node do
 
   end
 
-  context 'node name' do
+  context 'node creation' do
 
     before do
       attributes = { :tags => { "name" => 'test node' } }
@@ -61,7 +61,7 @@ describe Yun::Node do
 
   end
 
-  context 'destroy' do
+  context 'node destroy' do
 
     before do
       @connection = Yun::Connection.new options
