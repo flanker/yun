@@ -29,6 +29,7 @@ GEM
     net-ssh (2.1.4)
     nokogiri (1.5.0)
     nyan-cat-formatter (0.0.6)
+    rake (0.8.7)
     rbx-require-relative (0.0.9)
     rspec (2.8.0)
       rspec-core (~> 2.8.0)
@@ -54,6 +55,7 @@ DEPENDENCIES
   hirb
   mocha
   nyan-cat-formatter
+  rake
   rspec
   ruby-debug
   thor
