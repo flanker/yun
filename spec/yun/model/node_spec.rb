@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'fog/aws/models/compute/server'
 
 describe Yun::Node do
 
@@ -29,10 +30,6 @@ describe Yun::Node do
           :public_ip_address => '127.0.0.1',
           :created_at => @time
         }
-      p Fog.class
-      p Fog::Compute.class
-      p Fog::Compute::AWS.class
-      p Fog::Compute::AWS::Server.class
       @ec2_node = Fog::Compute::AWS::Server.new attributes
     end
 
