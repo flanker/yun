@@ -1,5 +1,6 @@
 yun 云
 ======
+[![Build Status](https://secure.travis-ci.org/flanker/yun.png?branch=master)](http://travis-ci.org/flanker/yun)
 
 About
 -----
