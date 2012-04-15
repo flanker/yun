@@ -3,6 +3,6 @@ require 'yun/version'
 
 describe Yun do
   it 'should return the version' do
-    Yun::VERSION.should == '0.0.5'
+    Yun::VERSION.should == '0.0.6'
   end
 end
