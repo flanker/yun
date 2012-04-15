@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640" />
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Yun by flanker</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/flanker/yun">Fork Me on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Yun</h1>
+            <h2>command line to manage your Amazon cloud service</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/flanker/yun/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/flanker/yun/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+      <span class="banner-fix"></span>
+
+      <section id="main_content">
+        <h1>yun 云</h1>
+
+<p><a href="http://travis-ci.org/flanker/yun"><img src="https://secure.travis-ci.org/flanker/yun.png?branch=master" alt="Build Status"></a></p>
+
+<h2>About</h2>
+
+<p><code>yun</code> is a command line tool for manage Amazon EC2 environment.</p>
+
+<p>It's still working in process. Now it supports <code>create</code>, <code>destroy</code>,
+<code>list</code>, <code>ssh</code>, <code>chef provision</code> commands.</p>
+
+<h2>Ruby Gem</h2>
+
+<p>Install <code>yun</code> by</p>
+
+<pre><code>(sudo) gem install yun
+</code></pre>
+
+<p>You can find <code>yun</code> in rubygems.org</p>
+
+<pre><code><a href="https://rubygems.org/gems/yun">https://rubygems.org/gems/yun</a>
+</code></pre>
+
+<h2>How to use</h2>
+
+<h3>config file</h3>
+
+<p>After installing <code>yun</code>, you need to create a config file <code>~/.yun</code>.</p>
+
+<p>Here is an example configuration:</p>
+
+<pre><code>#######################################################
+# Yun Credentials File
+#
+:default:
+  :aws_access_key_id: YOUR_AWS_ACCESS_KEY_ID
+  :aws_secret_access_key: YOUR_AWS_SECRET_ACCESS_KEY
+  :region: us-west-1
+  :key_name: YOUR_KEY_PAIR_NAME
+  :chef_repo: /PATH/TO/YOUR/CHEF_REPO (optional)
+  :os:
+    :ubuntu:
+      :image: ami-cba1fe8e
+      :user: ubuntu
+    :amazon:
+      :image: ami-1bd68a5e
+      :user: ec2-user
+    :windows:
+      :image: ami-ed3768a8
+      :user:
+    :centos:
+      :image: ami-dd2f7298
+      :user: root
+</code></pre>
+
+<h3>create EC2 node</h3>
+
+<pre><code>yun node create NODE_NAME --os OS_NAME --instance_type INSTANCE_TYPE
+</code></pre>
+
+<p>OS_NAME could be os listed in your <code>~/.yun</code> configuration file (<code>ubuntu</code>,
+<code>amazon</code>, <code>centos</code>, etc).</p>
+
+<p>INSTANCE_TYPE could be <code>micro</code>, <code>small</code>, etc</p>
+
+<h3>list all EC2 node</h3>
+
+<pre><code>yun node list
+</code></pre>
+
+<h3>destroy EC2 node</h3>
+
+<pre><code>yun node destroy NODE_NAME
+</code></pre>
+
+<h3>ssh to EC2 node</h3>
+
+<pre><code>yun ssh NODE_NAME
+</code></pre>
+
+<h3>provision EC2 node using chef</h3>
+
+<pre><code>yun chef NODE_NAME ROLE_NAME
+</code></pre>
+
+<h2>Other</h2>
+
+<p>Feel free to contact me if you have any problem:</p>
+
+<ul>
+<li>flankerfc at Gmail</li>
+<li><a href="https://twitter.com/#!/fengzhichao">@fengzhichao</a></li>
+<li><a href="http://www.weibo.com/flankerfc">@冯智超</a></li>
+</ul>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/flanker">flanker</a> can be found on <a href="https://github.com/flanker/yun">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-30638157-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
